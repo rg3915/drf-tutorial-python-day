@@ -1,0 +1,125 @@
+* OK O que é REST
+* OK Métodos
+* OK Código de estado do HTTP
+
+*  Script para criar um projeto simples
+    git clone https://github.com/rg3915/drf-tutorial-grupy-sp.git
+    ls -la drf-tutorial-grupy-sp
+    mv drf-tutorial-grupy-sp/manage.py .
+    mv drf-tutorial-grupy-sp/requirements.txt .
+    mv drf-tutorial-grupy-sp/myproject .
+    rm -rf drf-tutorial-grupy-sp/
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt; pip install -U pip
+    python manage.py makemigrations core
+    python manage.py migrate
+    python manage.py createsuperuser --username='admin' -- email='admin@email.com'
+    python manage.py createsuperuser --username='regis' -- email='regis@email.com'
+    python manage.py createsuperuser --username='arthur' -- email='arthur@email.com'
+    python manage.py shell
+        from myproject.core.models import Person
+        from myproject.core.serializers import PersonSerializer
+        from rest_framework.renderers import JSONRenderer
+        from rest_framework.parsers import JSONParser
+        person = Person(first_name='Guido', last_name='Van Rossum', email='guido@email.com')
+        person.save()
+        person = Person(first_name='Adrian', last_name='Holovaty', email='adrian@email.com')
+        person.save()
+        person = Person(first_name='Jacob', last_name='Kaplan Moss', email='jacob@email.com')
+        person.save()
+
+* OK Editar views.py
+
+    class PersonViewSet(viewsets.ModelViewSet):
+        queryset = Person.objects.all()
+        serializer_class = PersonSerializer
+
+
+* OK Editar urls.py
+
+    router.register(r'persons', views.PersonViewSet)
+
+
+* OK Mostrar a interface
+
+* OK Rodar a API
+    http http://127.0.0.1:8000/users/
+    http http://127.0.0.1:8000/persons/
+    curl http://127.0.0.1:8000/persons/
+
+* Editar views.py
+
+# from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+# from rest_framework.parsers import JSONParser
+from rest_framework import generics, mixins  # novo
+
+
+class PersonList(mixins.ListModelMixin,
+                 mixins.CreateModelMixin,
+                 generics.GenericAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class PersonDetail(mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   generics.GenericAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+
+* Editar core/urls.py
+
+    url(r'^persons/$', views.PersonList.as_view()),
+    url(r'^persons/(?P<pk>[0-9]+)/$', views.PersonDetail.as_view()),
+
+
+
+* Editar serializers.py
+
+**** Tirar
+
+'''
+    def create(self, validated_data):
+        """
+        Cria e retorna uma nova instancia Person, pedindo a data valida.
+        :param validated_data:
+        """
+        return Person.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        """
+        Atualiza e retorna uma nova instancia Person, pedindo a data valida.
+        """
+
+        instance.first_name = validated_data.get(
+            'first_name', instance.first_name)
+        instance.last_name = validated_data.get(
+            'last_name', instance.last_name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.save()
+        return instance
+'''
+
+* OK Rodar a API
+    http PUT http://127.0.0.1:8000/persons/1/ first_name='Ada' last_name='Lovelace' email='ada@email.com'
+
