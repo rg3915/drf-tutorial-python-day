@@ -182,10 +182,6 @@ Dando continuidade ao nosso projeto vamos editar alguns arquivos:
 
 
 
-```python
-code here
-```
-
 
 
 
