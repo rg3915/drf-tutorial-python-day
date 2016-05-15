@@ -36,9 +36,6 @@
         serializer_class = PersonSerializer
 
 
-* OK Editar urls.py
-
-    router.register(r'persons', views.PersonViewSet)
 
 
 * OK Mostrar a interface
@@ -48,12 +45,15 @@
     http http://127.0.0.1:8000/persons/
     curl http://127.0.0.1:8000/persons/
 
+* OK msg: Usando mixins
+
 * Editar views.py
 
 # from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 # from rest_framework.parsers import JSONParser
-from rest_framework import generics, mixins  # novo
+from rest_framework import generics
+from rest_framework import mixins  # novo
 
 
 class PersonList(mixins.ListModelMixin,
@@ -123,3 +123,28 @@ class PersonDetail(mixins.RetrieveModelMixin,
 * OK Rodar a API
     http PUT http://127.0.0.1:8000/persons/1/ first_name='Ada' last_name='Lovelace' email='ada@email.com'
 
+* msg Class Based View
+
+* Editar views.py
+
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from rest_framework import generics
+from myproject.core.serializers import UserSerializer
+from myproject.core.models import Person
+from myproject.core.serializers import PersonSerializer
+
+
+class PersonList(generics.ListCreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+
+class PersonDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer

@@ -1,4 +1,3 @@
-# serializers.py
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from myproject.core.models import Person

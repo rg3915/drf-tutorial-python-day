@@ -178,9 +178,35 @@ http -a admin:demodemo http://127.0.0.1:8000/users/
 
 ## Step-2 Class Based View
 
-Dando continuidade ao nosso projeto vamos editar alguns arquivos:
+Dando continuidade ao nosso projeto vamos editar o `views.py`.
+
+E este será o nosso resultado final.
+
+```python
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from rest_framework import generics
+from myproject.core.serializers import UserSerializer
+from myproject.core.models import Person
+from myproject.core.serializers import PersonSerializer
 
 
+class PersonList(generics.ListCreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+
+class PersonDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+```
+
+Leia a documentação oficial: [Tutorial 3: Class Based Views][9].
 
 
 
