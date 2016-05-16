@@ -29,6 +29,13 @@
         person = Person(first_name='Jacob', last_name='Kaplan Moss', email='jacob@email.com')
         person.save()
 
+* OK Mostrar a app
+
+* OK Rodar a API
+    http http://127.0.0.1:8000/users/
+    http http://127.0.0.1:8000/persons/
+    curl http://127.0.0.1:8000/persons/
+
 * OK Editar views.py
 
     class PersonViewSet(viewsets.ModelViewSet):
@@ -38,12 +45,6 @@
 
 
 
-* OK Mostrar a interface
-
-* OK Rodar a API
-    http http://127.0.0.1:8000/users/
-    http http://127.0.0.1:8000/persons/
-    curl http://127.0.0.1:8000/persons/
 
 * OK msg: Usando mixins
 

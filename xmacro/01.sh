@@ -13,6 +13,21 @@ echo "KeyStrPress Control_L KeyStrPress Shift_L KeyStrPress Left KeyStrRelease L
 
 echo "KeyStrPress Control_L KeyStrPress Shift_L KeyStrPress Right KeyStrRelease Right KeyStrRelease Shift_L KeyStrRelease Control_L" > temp/right.txt
 
+echo "KeyStrPress Control_L KeyStrPress c KeyStrRelease c KeyStrRelease Control_L" > temp/ctrl_c.txt
+
+echo "KeyStrPress Escape KeyStrRelease Escape" > temp/esc.txt
+
+cat << EOF > temp/newlinebelow.txt
+String o
+EOF
+
+cat << EOF > temp/ps1.txt
+String PS1="$ "
+KeyStrPress Return KeyStrRelease Return
+String clear
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/deletalinha3.txt
 KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
 String 3d
@@ -27,6 +42,15 @@ String d
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/delete_line.txt
+String dd
+EOF
+
+cat << EOF > temp/salvarfechar.txt
+KeyStrPress Escape KeyStrRelease Escape
+String :wq
+KeyStrPress Return KeyStrRelease Return
+EOF
 
 echo "String i" > temp/edit.txt
 
@@ -43,6 +67,13 @@ EOF
 
 cat << EOF > temp/clone.txt
 String git clone https://github.com/rg3915/drf-tutorial-grupy-sp.git
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/copy.txt
+String cp -r 
+KeyStrPress dead_tilde KeyStrRelease dead_tilde KeyStrPress dead_tilde KeyStrRelease dead_tilde
+String /bkp/drf-tutorial-grupy-sp/ .
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -169,7 +200,167 @@ String vim myproject/core/views.py
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/goto_line6.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 6
+KeyStrPress Return KeyStrRelease Return
+EOF
 
+cat << EOF > temp/goto_line8.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 8
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line11.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 11
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line12.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 12
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line15.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 15
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line22.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 22
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/typePersonViewSet.txt
+KeyStrPress Return KeyStrRelease Return
+String class PersonViewSet(viewsets.ModelViewSet):
+KeyStrPress Return KeyStrRelease Return
+String     queryset = Person.objects.all()
+KeyStrPress Return KeyStrRelease Return
+String     serializer_class = PersonSerializer
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+
+cat << EOF > temp/msg_rodar_app.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  rodar a app
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/http_users.txt
+String http http://127.0.0.1:8000/users/
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/http_persons.txt
+String http http://127.0.0.1:8000/api/persons/
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/curl_persons.txt
+String curl http://127.0.0.1:8000/api/persons/
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/open_urls.txt
+String vim myproject/urls.py
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line12.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 12
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/type_api_url.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+EOF
+
+cat << EOF > temp/type_url_router.txt
+String router.register(r'persons', views.PersonViewSet)
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/msg_usando_mixins.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  Usando Mixins
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/exit.txt
+String exit
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/comentar.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+EOF
+
+cat << EOF > temp/type_view_generics.txt
+String from rest_framework import generics
+KeyStrPress Return KeyStrRelease Return
+String from rest_framework import mixins
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/type_mixins.txt
+String class PersonList(mixins.ListModelMixin,
+KeyStrPress Return KeyStrRelease Return
+String                  mixins.CreateModelMixin,
+KeyStrPress Return KeyStrRelease Return
+String                  generics.GenericAPIView):
+KeyStrPress Return KeyStrRelease Return
+String     queryset = Person.objects.all()
+KeyStrPress Return KeyStrRelease Return
+String     serializer_class = PersonSerializer
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String     def get(self, request, *args, **kwargs):
+KeyStrPress Return KeyStrRelease Return
+String         return self.list(request, *args, **kwargs)
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String     def post(self, request, *args, **kwargs):
+KeyStrPress Return KeyStrRelease Return
+String         return self.create(request, *args, **kwargs)
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String class PersonDetail(mixins.RetrieveModelMixin,
+KeyStrPress Return KeyStrRelease Return
+String                    mixins.UpdateModelMixin,
+KeyStrPress Return KeyStrRelease Return
+String                    mixins.DestroyModelMixin,
+KeyStrPress Return KeyStrRelease Return
+String                    generics.GenericAPIView):
+KeyStrPress Return KeyStrRelease Return
+String     queryset = Person.objects.all()
+KeyStrPress Return KeyStrRelease Return
+String     serializer_class = PersonSerializer
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String     def get(self, request, *args, **kwargs):
+KeyStrPress Return KeyStrRelease Return
+String         return self.retrieve(request, *args, **kwargs)
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String     def put(self, request, *args, **kwargs):
+KeyStrPress Return KeyStrRelease Return
+String         return self.update(request, *args, **kwargs)
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+String     def delete(self, request, *args, **kwargs):
+KeyStrPress Return KeyStrRelease Return
+String         return self.destroy(request, *args, **kwargs)
+KeyStrPress Return KeyStrRelease Return
+EOF
 
 
 # xmacroplay ----------------------------------------------
@@ -207,7 +398,8 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-xmacroplay -d 30 < temp/clone.txt # velocity 30
+# xmacroplay -d 30 < temp/clone.txt # velocity 30
+xmacroplay -d 30 < temp/copy.txt # velocity 30 # TEMP
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -219,15 +411,9 @@ xmacroplay -d 3 < temp/alternar.txt
 continuar
 
 xmacroplay -d 30 < temp/move_manage.txt # velocity 30
-xmacroplay -d 3 < temp/alternar.txt
-
-continuar
-
+sleep 0.5
 xmacroplay -d 30 < temp/move_requirements.txt # velocity 30
-xmacroplay -d 3 < temp/alternar.txt
-
-continuar
-
+sleep 0.5
 xmacroplay -d 30 < temp/move_myproject.txt # velocity 30
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -239,10 +425,10 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-# xmacroplay -d 15 < temp/delete_folder.txt # velocity 15
-# xmacroplay -d 3 < temp/alternar.txt
+xmacroplay -d 15 < temp/delete_folder.txt # velocity 15
+xmacroplay -d 3 < temp/alternar.txt
 
-# continuar
+continuar
 
 xmacroplay -d 15 < temp/venv.txt # velocity 15
 xmacroplay -d 3 < temp/alternar.txt
@@ -309,13 +495,13 @@ xmacroplay -d 3 < temp/alternar.txt
 continuar
 
 xmacroplay -d 15 < temp/limpar.txt
-xmacroplay -d 45 < temp/import.txt # velocity 45
+xmacroplay -d 30 < temp/import.txt # velocity 30
 sleep 1
-xmacroplay -d 45 < temp/person1.txt # velocity 45
+xmacroplay -d 30 < temp/person1.txt # velocity 30
 sleep 1
-xmacroplay -d 45 < temp/person2.txt # velocity 45
+xmacroplay -d 30 < temp/person2.txt # velocity 30
 sleep 1
-xmacroplay -d 45 < temp/person3.txt # velocity 45
+xmacroplay -d 30 < temp/person3.txt # velocity 30
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -325,4 +511,108 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-xmacroplay -d 15 < temp/mostrar_views.txt # velocity 15
+xmacroplay -d 15 < temp/msg_rodar_app.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 3 < temp/ctrl_e.txt
+sleep 2
+xmacroplay -d 15 < temp/ps1.txt
+# aumentar a fonte
+for i in $(seq 1 5); do xmacroplay -d 3 < temp/zoom.txt; done
+# limpar a tela
+xmacroplay -d 3 < temp/limpar.txt
+sleep 2
+xmacroplay -d 60 < temp/http_users.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar2
+
+xmacroplay -d 60 < temp/http_persons.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar2
+
+xmacroplay -d 60 < temp/curl_persons.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar2
+
+xmacroplay -d 25 < temp/exit.txt
+sleep 1
+xmacroplay -d 25 < temp/ctrl_c.txt
+xmacroplay -d 25 < temp/limpar.txt
+sleep 2
+xmacroplay -d 20 < temp/mostrar_views.txt # velocity 20
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/goto_line22.txt
+# delete_line 40x
+for i in $(seq 1 40); do xmacroplay -d 15 < temp/delete_line.txt; done
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 3 < temp/edit.txt
+xmacroplay -d 45 < temp/typePersonViewSet.txt # velocity 45
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 45 < temp/open_urls.txt # velocity 45
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 45 < temp/goto_line12.txt # velocity 45
+xmacroplay -d 3 < temp/edit.txt
+xmacroplay -d 45 < temp/type_api_url.txt # velocity 45
+xmacroplay -d 15 < temp/esc.txt
+xmacroplay -d 45 < temp/goto_line8.txt # velocity 45
+xmacroplay -d 3 < temp/newlinebelow.txt
+xmacroplay -d 45 < temp/type_url_router.txt # velocity 45
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/msg_usando_mixins.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 20 < temp/mostrar_views.txt # velocity 20
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 5 < temp/goto_line11.txt
+sleep 0.5
+xmacroplay -d 5 < temp/edit.txt
+xmacroplay -d 15 < temp/type_view_generics.txt # velocity 45
+xmacroplay -d 3 < temp/esc.txt
+xmacroplay -d 5 < temp/goto_line15.txt
+# delete_line 12x
+for i in $(seq 1 12); do xmacroplay -d 15 < temp/delete_line.txt; done
+xmacroplay -d 5 < temp/edit.txt
+xmacroplay -d 5 < temp/type_mixins.txt # velocity 45
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
