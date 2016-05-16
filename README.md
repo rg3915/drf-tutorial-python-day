@@ -178,7 +178,74 @@ http -a admin:demodemo http://127.0.0.1:8000/users/
 
 ## Step-2 Class Based View
 
+### Usando Mixins
+
+*Mixins* são trechos reutilizáveis de códigos. E baseado na herança de classes podemos usá-los com bastante facilidade.
+
 Dando continuidade ao nosso projeto vamos editar o `views.py`.
+
+```python
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from rest_framework import generics
+from rest_framework import mixins  # novo
+from myproject.core.serializers import UserSerializer, PersonSerializer
+from myproject.core.models import Person
+
+
+class PersonList(mixins.ListModelMixin,
+                 mixins.CreateModelMixin,
+                 generics.GenericAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+```
+
+`GenericAPIView`: é a base, a classe genérica.
+
+`ListModelMixin`: lista os objetos a partir da ação `.list()`.
+
+`CreateModelMixin`: cria novos objetos a partir da ação `.create()`.
+
+Note também a declaração dos métodos `get` e `post`.
+
+```python
+class PersonDetail(mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   generics.GenericAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+```
+
+`RetrieveModelMixin`: retorna os detalhes do objeto a partir da ação `.retrieve()`.
+
+`UpdateModelMixin`: atualiza um objeto a partir da ação `.update()`.
+
+`DestroyModelMixin`: deleta um objeto a partir da ação `.destroy()`.
+
+
+
+### Usando `generics`
 
 E este será o nosso resultado final.
 
