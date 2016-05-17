@@ -46,6 +46,10 @@ cat << EOF > temp/delete_line.txt
 String dd
 EOF
 
+cat << EOF > temp/delete_one.txt
+KeyStrPress Delete KeyStrRelease Delete
+EOF
+
 cat << EOF > temp/salvarfechar.txt
 KeyStrPress Escape KeyStrRelease Escape
 String :wq
@@ -57,6 +61,13 @@ echo "String i" > temp/edit.txt
 cat << EOF > temp/enter_home.txt
 String cd 
 KeyStrPress dead_tilde KeyStrRelease dead_tilde KeyStrPress dead_tilde KeyStrRelease dead_tilde
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/remove_teste.txt
+String rm -rf 
+KeyStrPress dead_tilde KeyStrRelease dead_tilde KeyStrPress dead_tilde KeyStrRelease dead_tilde
+String /teste
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -117,6 +128,13 @@ String source .venv/bin/activate
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/activate_temp.txt
+String source 
+KeyStrPress dead_tilde KeyStrRelease dead_tilde KeyStrPress dead_tilde KeyStrRelease dead_tilde
+String /bkp/.venv/bin/activate
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/pa.txt
 String pa
 KeyStrPress Return KeyStrRelease Return
@@ -142,8 +160,8 @@ String python manage.py createsuperuser --username='regis' --email='regis@exampl
 KeyStrPress Return KeyStrRelease Return
 EOF
 
-cat << EOF > temp/createsuperuser_arthur.txt
-String python manage.py createsuperuser --username='arthur' --email='arthur@example.com'
+cat << EOF > temp/createsuperuser_willian.txt
+String python manage.py createsuperuser --username='willian' --email='willian@example.com'
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -170,23 +188,17 @@ KeyStrPress Return KeyStrRelease Return
 EOF
 
 cat << EOF > temp/person1.txt
-String person = Person(first_name='Guido', last_name='Van Rossum', email='guido@email.com')
-KeyStrPress Return KeyStrRelease Return
-String person.save()
+String Person.objects.create(first_name='Guido', last_name='Van Rossum', email='guido@email.com')
 KeyStrPress Return KeyStrRelease Return
 EOF
 
 cat << EOF > temp/person2.txt
-String person = Person(first_name='Adrian', last_name='Holovaty', email='adrian@email.com')
-KeyStrPress Return KeyStrRelease Return
-String person.save()
+String Person.objects.create(first_name='Adrian', last_name='Holovaty', email='adrian@email.com')
 KeyStrPress Return KeyStrRelease Return
 EOF
 
 cat << EOF > temp/person3.txt
-String person = Person(first_name='Jacob', last_name='Kaplan Moss', email='jacob@email.com')
-KeyStrPress Return KeyStrRelease Return
-String person.save()
+String Person.objects.create(first_name='Jacob', last_name='Kaplan Moss', email='jacob@email.com')
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -197,6 +209,12 @@ EOF
 
 cat << EOF > temp/mostrar_views.txt
 String vim myproject/core/views.py
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line5.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 5
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -212,6 +230,12 @@ String 8
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/goto_line9.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 9
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/goto_line11.txt
 KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
 String 11
@@ -224,15 +248,45 @@ String 12
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/goto_line13.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 13
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/goto_line15.txt
 KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
 String 15
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/goto_line16.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 16
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line21.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 21
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/goto_line22.txt
 KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
 String 22
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line33.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 33
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_line40.txt
+KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
+String 40
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -250,6 +304,11 @@ EOF
 cat << EOF > temp/msg_rodar_app.txt
 KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
 String  rodar a app
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/runserver.txt
+String ./manage.py runserver
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -363,6 +422,82 @@ KeyStrPress Return KeyStrRelease Return
 EOF
 
 
+cat << EOF > temp/open_core_urls.txt
+String vim myproject/core/urls.py
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/open_core_serializers.txt
+String vim myproject/core/serializers.py
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/goto_end_line.txt
+String A
+EOF
+
+cat << EOF > temp/backspace.txt
+KeyStrPress BackSpace KeyStrRelease BackSpace
+EOF
+
+
+cat << EOF > temp/typePersonList.txt
+String PersonList.as_view()),
+EOF
+
+cat << EOF > temp/move_down.txt
+String j
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/move_right.txt
+String l
+EOF
+
+cat << EOF > temp/move_up.txt
+String k
+EOF
+
+cat << EOF > temp/typePersonDetail.txt
+String PersonDetail.as_view()),
+EOF
+
+cat << EOF > temp/http_update.txt
+String http PUT http://127.0.0.1:8000/api/persons/1/ first_name='Ada' last_name='Lovelace' email='ada@email.com'
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/msg_cbv.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  Class Based View
+KeyStrPress Return KeyStrRelease Return
+EOF
+
+cat << EOF > temp/type_ListCreateAPIView.txt
+String class PersonList(generics.ListCreateAPIView):
+EOF
+
+cat << EOF > temp/type_RetrieveUpdateDestroyAPIView.txt
+String class PersonDetail(generics.RetrieveUpdateDestroyAPIView):
+EOF
+
+cat << EOF > temp/msg_fim.txt
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  FIM
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  github.com/rg3915/drf-tutorial-python-day
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Return KeyStrRelease Return
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  github.com/grupy-sp/encontros
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 # xmacroplay ----------------------------------------------
 answer="s"
 
@@ -389,10 +524,9 @@ xmacroplay -d 3 < temp/alternar.txt
 sleep 1
 
 xmacroplay -d 15 < temp/enter_home.txt # velocity 15
-xmacroplay -d 3 < temp/alternar.txt
-
-continuar
-
+sleep 0.5
+xmacroplay -d 5 < temp/remove_teste.txt
+sleep 0.5
 xmacroplay -d 15 < temp/criar_pasta_teste.txt # velocity 15
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -430,21 +564,22 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-xmacroplay -d 15 < temp/venv.txt # velocity 15
-xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 15 < temp/venv.txt # velocity 15
+# xmacroplay -d 3 < temp/alternar.txt
 
-continuar
+# continuar
 
-xmacroplay -d 15 < temp/activate.txt # velocity 15
+# xmacroplay -d 15 < temp/activate.txt # velocity 15
+xmacroplay -d 15 < temp/activate_temp.txt # velocity 15
 xmacroplay -d 15 < temp/pa.txt # velocity 15
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-xmacroplay -d 15 < temp/install.txt # velocity 15
-xmacroplay -d 3 < temp/alternar.txt
+# xmacroplay -d 15 < temp/install.txt # velocity 15
+# xmacroplay -d 3 < temp/alternar.txt
 
-continuar
+# continuar
 
 xmacroplay -d 15 < temp/limpar.txt # velocity 15
 xmacroplay -d 15 < temp/migrate.txt # velocity 15
@@ -477,7 +612,7 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar
 
-xmacroplay -d 15 < temp/createsuperuser_arthur.txt # velocity 15
+xmacroplay -d 15 < temp/createsuperuser_willian.txt # velocity 15
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -496,11 +631,11 @@ continuar
 
 xmacroplay -d 15 < temp/limpar.txt
 xmacroplay -d 30 < temp/import.txt # velocity 30
-sleep 1
+sleep 0.5
 xmacroplay -d 30 < temp/person1.txt # velocity 30
-sleep 1
+sleep 0.5
 xmacroplay -d 30 < temp/person2.txt # velocity 30
-sleep 1
+sleep 0.5
 xmacroplay -d 30 < temp/person3.txt # velocity 30
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -512,6 +647,8 @@ xmacroplay -d 3 < temp/alternar.txt
 continuar
 
 xmacroplay -d 15 < temp/msg_rodar_app.txt
+sleep 0.5
+xmacroplay -d 15 < temp/runserver.txt
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -529,11 +666,15 @@ xmacroplay -d 3 < temp/alternar.txt
 
 continuar2
 
+xmacroplay -d 3 < temp/limpar.txt
+sleep 0.5
 xmacroplay -d 60 < temp/http_persons.txt
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar2
 
+xmacroplay -d 3 < temp/limpar.txt
+sleep 0.5
 xmacroplay -d 60 < temp/curl_persons.txt
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -545,6 +686,7 @@ xmacroplay -d 25 < temp/ctrl_c.txt
 xmacroplay -d 25 < temp/limpar.txt
 sleep 2
 xmacroplay -d 20 < temp/mostrar_views.txt # velocity 20
+xmacroplay -d 15 < temp/goto_line40.txt
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -604,8 +746,8 @@ xmacroplay -d 5 < temp/edit.txt
 xmacroplay -d 15 < temp/type_view_generics.txt # velocity 45
 xmacroplay -d 3 < temp/esc.txt
 xmacroplay -d 5 < temp/goto_line15.txt
-# delete_line 12x
-for i in $(seq 1 12); do xmacroplay -d 15 < temp/delete_line.txt; done
+# delete_line 13x
+for i in $(seq 1 13); do xmacroplay -d 15 < temp/delete_line.txt; done
 xmacroplay -d 5 < temp/edit.txt
 xmacroplay -d 5 < temp/type_mixins.txt # velocity 45
 xmacroplay -d 3 < temp/alternar.txt
@@ -616,3 +758,136 @@ xmacroplay -d 15 < temp/salvarfechar.txt
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
+
+xmacroplay -d 45 < temp/open_urls.txt # velocity 45
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 45 < temp/goto_line9.txt
+sleep 1
+xmacroplay -d 45 < temp/delete_line.txt
+sleep 1
+xmacroplay -d 45 < temp/goto_line13.txt
+sleep 1
+xmacroplay -d 45 < temp/delete_one.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 45 < temp/open_core_urls.txt
+xmacroplay -d 45 < temp/goto_line5.txt
+xmacroplay -d 45 < temp/goto_end_line.txt
+sleep 1
+# backspace 13x
+for i in $(seq 1 13); do xmacroplay -d 30 < temp/backspace.txt; done
+xmacroplay -d 45 < temp/typePersonList.txt
+xmacroplay -d 5 < temp/esc.txt
+xmacroplay -d 45 < temp/move_down.txt
+xmacroplay -d 45 < temp/goto_end_line.txt
+# backspace 17x
+for i in $(seq 1 17); do xmacroplay -d 30 < temp/backspace.txt; done
+xmacroplay -d 45 < temp/typePersonDetail.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 45 < temp/open_core_serializers.txt
+xmacroplay -d 15 < temp/goto_line33.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/goto_line21.txt
+# delete_line 19x
+for i in $(seq 1 19); do xmacroplay -d 15 < temp/delete_line.txt; done
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/msg_rodar_app.txt
+sleep 0.5
+xmacroplay -d 15 < temp/runserver.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 3 < temp/ctrl_e.txt
+sleep 2
+xmacroplay -d 15 < temp/ps1.txt
+# aumentar a fonte
+for i in $(seq 1 5); do xmacroplay -d 3 < temp/zoom.txt; done
+# limpar a tela
+xmacroplay -d 3 < temp/limpar.txt
+sleep 2
+xmacroplay -d 60 < temp/http_update.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar2
+
+xmacroplay -d 25 < temp/exit.txt
+sleep 1
+xmacroplay -d 25 < temp/ctrl_c.txt
+xmacroplay -d 25 < temp/limpar.txt
+sleep 2
+xmacroplay -d 15 < temp/msg_cbv.txt
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 20 < temp/mostrar_views.txt # velocity 20
+xmacroplay -d 30 < temp/goto_line15.txt
+for i in $(seq 1 3); do sleep 0.5; xmacroplay -d 30 < temp/delete_line.txt; done
+xmacroplay -d 30 < temp/move_up.txt
+xmacroplay -d 30 < temp/edit.txt
+xmacroplay -d 45 < temp/type_ListCreateAPIView.txt # velocity 45
+sleep 0.5
+xmacroplay -d 30 < temp/esc.txt
+sleep 0.5
+# move_down
+for i in $(seq 1 2); do xmacroplay -d 30 < temp/move_down.txt; done
+sleep 1
+# delete_line 5x
+for i in $(seq 1 5); do xmacroplay -d 15 < temp/delete_line.txt; done
+# move_down
+xmacroplay -d 30 < temp/move_down.txt
+sleep 1
+# delete_line 4x
+for i in $(seq 1 4); do xmacroplay -d 15 < temp/delete_line.txt; done
+xmacroplay -d 30 < temp/move_up.txt
+xmacroplay -d 30 < temp/edit.txt
+sleep 1
+xmacroplay -d 45 < temp/type_RetrieveUpdateDestroyAPIView.txt # velocity 45
+sleep 0.5
+xmacroplay -d 30 < temp/esc.txt
+sleep 0.5
+# move_down
+for i in $(seq 1 2); do xmacroplay -d 30 < temp/move_down.txt; done
+sleep 1
+# delete_line 9x
+for i in $(seq 1 9); do xmacroplay -d 15 < temp/delete_line.txt; done
+for i in $(seq 1 5); do xmacroplay -d 30 < temp/move_down.txt; done
+xmacroplay -d 3 < temp/alternar.txt
+
+continuar
+
+xmacroplay -d 15 < temp/salvarfechar.txt
+xmacroplay -d 15 < temp/ps1.txt
+xmacroplay -d 15 < temp/limpar.txt
+sleep 1
+xmacroplay -d 20 < temp/msg_fim.txt
