@@ -284,9 +284,9 @@ String 33
 KeyStrPress Return KeyStrRelease Return
 EOF
 
-cat << EOF > temp/goto_line40.txt
+cat << EOF > temp/goto_line30.txt
 KeyStrPress Shift_L KeyStrPress semicolon KeyStrRelease semicolon KeyStrRelease Shift_L
-String 40
+String 30
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -460,6 +460,8 @@ EOF
 
 cat << EOF > temp/typePersonDetail.txt
 String PersonDetail.as_view()),
+KeyStrPress Return KeyStrRelease Return
+String ]
 EOF
 
 cat << EOF > temp/http_update.txt
@@ -686,7 +688,7 @@ xmacroplay -d 25 < temp/ctrl_c.txt
 xmacroplay -d 25 < temp/limpar.txt
 sleep 2
 xmacroplay -d 20 < temp/mostrar_views.txt # velocity 20
-xmacroplay -d 15 < temp/goto_line40.txt
+xmacroplay -d 15 < temp/goto_line30.txt
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
@@ -743,13 +745,13 @@ continuar
 xmacroplay -d 5 < temp/goto_line11.txt
 sleep 0.5
 xmacroplay -d 5 < temp/edit.txt
-xmacroplay -d 15 < temp/type_view_generics.txt # velocity 45
+xmacroplay -d 45 < temp/type_view_generics.txt # velocity 45
 xmacroplay -d 3 < temp/esc.txt
 xmacroplay -d 5 < temp/goto_line15.txt
 # delete_line 13x
 for i in $(seq 1 13); do xmacroplay -d 15 < temp/delete_line.txt; done
 xmacroplay -d 5 < temp/edit.txt
-xmacroplay -d 5 < temp/type_mixins.txt # velocity 45
+xmacroplay -d 20 < temp/type_mixins.txt # velocity 20
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
