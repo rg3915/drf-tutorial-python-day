@@ -1,6 +1,6 @@
 # Tutorial sobre Django Rest Framework com Class Based Views para o Grupy-SP Maio 2016
 
-Este tutorial é uma continuação de [Introdução ao Django Rest Framework Grupy-SP Abril 2016][8], que foi baseado em [Django Rest Framework Serialization][0], que foi baseado no meu GitHub [Django Rest Framework trainning and tests][1], que foi baseado no tutorial do [Hugo Brilhante][2] apresentado na [Python Brasil 11][3] (2015), que foi baseado na [documentação][4].
+Este tutorial é uma continuação de [Introdução ao Django Rest Framework Grupy-SP Abril 2016][8], que foi baseado em [Django Rest Framework Serialization][0], que foi baseado no meu GitHub [Django Rest Framework trainning and tests][1], que foi baseado no tutorial do [Hugo Brilhante][2] apresentado na [Python Brasil 11][3] (2015), que foi baseado na [documentação][9].
 
 Falaremos sobre [Class Based Views][9] aplicado ao [Django Rest Framework][10].
 
