@@ -67,6 +67,20 @@ $ python manage.py migrate
 $ python manage.py createsuperuser  --username='admin' --email=''
 ```
 
+## Clonando do repositório
+
+Se você quiser pode clonar o projeto daqui.
+
+```bash
+$ python -m venv .venv # Python 3
+$ source .venv/bin/activate
+$ git clone https://github.com/rg3915/drf-tutorial-python-day.git
+$ cd drf-tutorial-python-day
+$ pip install -r requirements.txt
+$ python manage.py migrate
+$ python manage.py createsuperuser  --username='admin' --email=''
+```
+
 ## Step-0 Projeto inicial
 
 Abra o arquivo `settings.py` e em `INSTALLED_APPS` acrescente

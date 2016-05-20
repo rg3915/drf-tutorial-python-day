@@ -81,6 +81,12 @@ String git clone https://github.com/rg3915/drf-tutorial-grupy-sp.git
 KeyStrPress Return KeyStrRelease Return
 EOF
 
+cat << EOF > temp/msg_clone.txt
+KeyStrPress Shift_R KeyStrPress 3 KeyStrRelease Shift_R KeyStrRelease 3
+String  git clone https://github.com/rg3915/drf-tutorial-grupy-sp.git
+KeyStrPress Return KeyStrRelease Return
+EOF
+
 cat << EOF > temp/copy.txt
 String cp -r 
 KeyStrPress dead_tilde KeyStrRelease dead_tilde KeyStrPress dead_tilde KeyStrRelease dead_tilde
@@ -135,8 +141,8 @@ String /bkp/.venv/bin/activate
 KeyStrPress Return KeyStrRelease Return
 EOF
 
-cat << EOF > temp/pa.txt
-String pa
+cat << EOF > temp/sa.txt
+String sa
 KeyStrPress Return KeyStrRelease Return
 EOF
 
@@ -535,6 +541,7 @@ xmacroplay -d 3 < temp/alternar.txt
 continuar
 
 # xmacroplay -d 30 < temp/clone.txt # velocity 30
+xmacroplay -d 30 < temp/msg_clone.txt # velocity 30
 xmacroplay -d 30 < temp/copy.txt # velocity 30 # TEMP
 xmacroplay -d 3 < temp/alternar.txt
 
@@ -573,7 +580,7 @@ continuar
 
 # xmacroplay -d 15 < temp/activate.txt # velocity 15
 xmacroplay -d 15 < temp/activate_temp.txt # velocity 15
-xmacroplay -d 15 < temp/pa.txt # velocity 15
+xmacroplay -d 15 < temp/sa.txt # velocity 15
 xmacroplay -d 3 < temp/alternar.txt
 
 continuar
